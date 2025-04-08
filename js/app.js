@@ -1,8 +1,27 @@
 import { gameboard, isOutsideBoard } from "./board/board.js";
-import { snake_speed, draw as snakeDraw, update as snakeUpdate, getSnakeHead, hasSelfColision as hasSnakeSelfCollision } from "./snake/snakeBody.js"
+import { snake_speed, draw as snakeDraw, update as snakeUpdate, getSnakeHead, hasSelfColision as hasSnakeSelfCollision, setSnakeSpeed } from "./snake/snakeBody.js"
 import { draw as foodDraw, update as foodUpdate} from './food/food.js'
 
+window.addEventListener('keydown', e => ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.key) && e.preventDefault());
+
 let lastTimeRender = 0;
+
+
+document.getElementById('easy').addEventListener('click', () => {
+    setSnakeSpeed(5);
+    resetGame();
+});
+  
+document.getElementById('medium').addEventListener('click', () => {
+    setSnakeSpeed(10);
+    resetGame();
+});
+  
+document.getElementById('hard').addEventListener('click', () => {
+    setSnakeSpeed(15);
+    resetGame();
+});
+
 
 
 function main(currentTime){
@@ -31,6 +50,8 @@ function main(currentTime){
     draw();
 }
 
+
+
 function update(){
     gameboard.innerHTML = '';
     snakeUpdate();
@@ -40,6 +61,17 @@ function update(){
 function draw(){
     snakeDraw();
     foodDraw();
+}
+
+function resetGame() {
+    while (gameboard.firstChild) {
+      gameboard.removeChild(gameboard.firstChild);
+    }
+    
+    snakeBody.length = 1;
+    snakeBody[0] = { x: 11, y: 11 };
+    
+    window.requestAnimationFrame(main);
 }
 
 export function checkGameOver(){

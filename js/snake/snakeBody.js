@@ -1,13 +1,18 @@
 import { gameboard, isOutsideBoard } from "../board/board.js";
 import { getInputDirection } from "./input.js";
 
-export const snake_speed = 7;
+export let snake_speed = 7;
+
 
 let novosSegmentos = 0;
 
 export const snakeBody = [
     {x: 11, y: 11}
 ]
+
+export function setSnakeSpeed(speed) {
+    snake_speed = speed;
+}
 
 export function update(){
     adicionarACobra();
@@ -61,6 +66,10 @@ export function adicionarACobra(){
 }
 
 //funções auxiliares
+
+export function getSnakeSpeed() {
+    return snake_speed;
+}
 
 export function getSnakeHead(){
     return snakeBody[0];

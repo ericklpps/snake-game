@@ -1,0 +1,92 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+  }
+  
+  .game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+    padding: 20px;
+  }
+  
+  .difficulty-buttons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    width: 100%;
+  }
+  
+  .difficulty-buttons button {
+    margin: 0 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+  
+  .difficulty-buttons button:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+  }
+  
+  .difficulty-buttons button:active {
+    transform: scale(0.98);
+  }
+  
+  #game-board {
+    display: grid;
+    grid-template-rows: repeat(21, 1fr);
+    grid-template-columns: repeat(21, 1fr);
+    width: 500px;
+    height: 500px;
+    background-color: #ccc;
+    border: 2px solid #333;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .snake {
+    background-color: #4CAF50;
+    border: 1px solid #2E7D32;
+  }
+  
+  .food {
+    background-color: #F44336;
+    border: 1px solid #B71C1C;
+    border-radius: 50%;
+  }
+  
+  
+  @media (max-width: 600px) {
+    #game-board {
+      width: 90vw;
+      height: 90vw;
+    }
+    
+    .difficulty-buttons {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .difficulty-buttons button {
+      margin: 5px 0;
+      width: 80%;
+    }
+  }
