@@ -18,7 +18,7 @@ document.getElementById('medium').addEventListener('click', () => {
 });
   
 document.getElementById('hard').addEventListener('click', () => {
-    setSnakeSpeed(15);
+    setSnakeSpeed(50);
     resetGame();
 });
 
