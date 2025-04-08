@@ -3,13 +3,20 @@ import { getInputDirection } from "./input.js";
 
 export const snake_speed = 5;
 
+let novosSegmentos = 0;
 
 export const snakeBody = [
     {x: 11, y: 11}
 ]
 
 export function update(){
+    adicionarACobra();
+    
     const inputDirection = getInputDirection();
+
+    for (let i = snakeBody.length -2; i >=0; i--){
+        snakeBody[i + 1] = { ...snakeBody[i]};
+    }
 
     //movimento da cabeça da cobra
     snakeBody[0].x += inputDirection.x;
@@ -37,4 +44,18 @@ export function colisao(position){
     return snakeBody.some(segment =>{
         return position.x === segment.x && position.y === segment.y;
     });
+}
+
+//expandindo a cobra
+export function aumentarCobra(quantidade){
+    novosSegmentos += quantidade;
+}
+
+export function adicionarACobra(){
+    if(novosSegmentos > 0){
+        snakeBody.push({
+            ...snakeBody[snakeBody.length -1],
+        });
+        novosSegmentos -= 1;
+    };
 }
