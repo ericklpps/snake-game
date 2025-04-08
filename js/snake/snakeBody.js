@@ -1,7 +1,7 @@
-import { gameboard } from "../board/board.js";
+import { gameboard, isOutsideBoard } from "../board/board.js";
 import { getInputDirection } from "./input.js";
 
-export const snake_speed = 5;
+export const snake_speed = 7;
 
 let novosSegmentos = 0;
 
@@ -58,4 +58,20 @@ export function adicionarACobra(){
         });
         novosSegmentos -= 1;
     };
+}
+
+//funções auxiliares
+
+export function getSnakeHead(){
+    return snakeBody[0];
+}
+
+export function hasSelfColision(){
+    const snakeHead = snakeBody[0];
+     
+    return snakeBody.some((segment, index) => {
+        if(index === 0) return false;
+
+        return snakeHead.x === segment.x && snakeHead.y === segment.y;
+    });
 }
