@@ -1,25 +1,41 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/style.css">
-    <script src="./js/app.js" defer type="module"></script>
-    <title>Snake Game</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./styles/style.css" />
+  <script src="./js/app.js" defer type="module"></script>
+  <title>Snake Game</title>
 </head>
 <body>
+
+  <a href="index.html" id="back-to-menu" title="Voltar ao menu">
+    ⬅️
+  </a>
+
+  <div class="game-container">
     
-    <div class="game-container">
-        <div class="difficulty-buttons">
-          <button id="easy">Fraco</button>
-          <button id="medium">Te falta coragem</button>
-          <button id="hard">Domador de Cobras</button>
-        </div>
-        
-        <div id="game-board"></div>
-        <div id="pontuacao">Pontos:</div>
+    <div class="difficulty-buttons controls">
+      <button id="easy">Fraco</button>
+      <button id="medium">Te falta coragem</button>
+      <button id="hard">Domador de Cobras</button>
+    </div>
+
+    <div id="game-board"></div>
+
+    <div id="dificuldade-atual" class="dificuldade-info">Dificuldade: Fraco</div>
+
+    <div class="score-container" id="pontuacao">Pontos: 0</div>
+
+    <div id="game-over-screen" class="hidden">
+      <div class="game-over-box">
+        <h1>GAME OVER</h1>
+        <p id="final-score">Pontuação: 0</p>
+        <button id="restart-button">Tentar novamente</button>
       </div>
-      
+    </div>
+
+  </div>
 
 </body>
 </html>

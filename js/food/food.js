@@ -1,6 +1,7 @@
 import { gameboard, generateRandomBoardPosition } from '../board/board.js';
 import { colisao as snakeCollision, aumentarCobra } from '../snake/snakeBody.js';
 
+
 export const cresceCobra = 1;
 let foodPosition = generateRandomPosition();
 
@@ -18,6 +19,10 @@ export function update() {
 
         foodPosition = generateRandomPosition();
     }
+}
+
+export function getScore() {
+    return score;
 }
 
 export function draw() {
