@@ -4,23 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/style.css">
-    <script src="./js/app.js" defer type="module"></script>
-    <title>Snake Game</title>
+    <title>Menu</title>
 </head>
 <body>
-    
-    <div class="game-container">
-        <div class="difficulty-buttons">
-          <button id="easy">Fraco</button>
-          <button id="medium">Te falta coragem</button>
-          <button id="hard">Domador de Cobras</button>
+    <div class="container-principal">
+        <h1 class="titulo">Snake Game</h1>
+        <div class="container">
+            <div class="logo-jogo">
+                <img src="assets/Logo-Snake-removebg-preview.png" alt="Logo Snake" style="z-index: 0; animation: subirDescer 1s infinite alternate;">
+            </div>
+            <div class="botoes-pagina-inicial">
+                <a href="/main.html">Jogar</a>
+                <a href="/regras.html">Como Jogar</a>
+            </div>
         </div>
-        
-        <div id="game-board"></div>
-        <br>
-        <div id="pontuacao">Pontos:</div>
-      </div>
-      
-
+    </div>
 </body>
 </html>
