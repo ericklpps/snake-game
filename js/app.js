@@ -13,7 +13,7 @@ document.getElementById('easy').addEventListener('click', () => {
 });
   
 document.getElementById('medium').addEventListener('click', () => {
-    setSnakeSpeed(10);
+    setSnakeSpeed(15);
     resetGame();
 });
   

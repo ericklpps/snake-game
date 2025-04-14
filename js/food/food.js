@@ -1,34 +1,43 @@
-import {gameboard, generateRandomBoardPosition} from '../board/board.js'
-import {colisao as snakeCollision, aumentarCobra} from '../snake/snakeBody.js'
+import { gameboard, generateRandomBoardPosition } from '../board/board.js';
+import { colisao as snakeCollision, aumentarCobra } from '../snake/snakeBody.js';
 
 export const cresceCobra = 1;
-
 let foodPosition = generateRandomPosition();
 
-export function update(){
-    if (snakeCollision(foodPosition)){
+let score = 0;
+
+export function update() {
+    if (snakeCollision(foodPosition)) {
         aumentarCobra(cresceCobra);
+        score++; 
+
+        const pontuacaoElement = document.getElementById("pontuacao");
+        if (pontuacaoElement) {
+            pontuacaoElement.textContent = `Pontos: ${score}`;
+        }
+
         foodPosition = generateRandomPosition();
     }
 }
 
-export function draw(){
-    const foodElement =  document.createElement('div');
+export function draw() {
+    const foodElement = document.createElement('div');
 
-        foodElement.classList.add('food')
+    foodElement.classList.add('food');
 
-        //configurar a posição 
-        foodElement.style.gridRowStart = foodPosition.y;
-        foodElement.style.gridColumnStart = foodPosition.x;
+    foodElement.style.gridRowStart = foodPosition.y;
+    foodElement.style.gridColumnStart = foodPosition.x;
 
-        //manipular o dom
-        gameboard.appendChild(foodElement)
+    gameboard.appendChild(foodElement);
 }
 
-function generateRandomPosition(){
+function generateRandomPosition() {
     let newFoodPosition;
 
-    while(newFoodPosition === undefined || snakeCollision(newFoodPosition)){
+    while (
+        newFoodPosition === undefined ||
+        snakeCollision(newFoodPosition)
+    ) {
         newFoodPosition = generateRandomBoardPosition();
     }
 

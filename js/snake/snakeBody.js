@@ -1,7 +1,7 @@
 import { gameboard, isOutsideBoard } from "../board/board.js";
 import { getInputDirection } from "./input.js";
 
-export let snake_speed = 7;
+export let snake_speed = 5;
 
 
 let novosSegmentos = 0;
