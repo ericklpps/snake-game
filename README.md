@@ -7,7 +7,7 @@ Desenvolver uma versão do Snake Game, o famoso Jogo da Cobrinha, utilizando HTM
 
 <ul>
   <li>Manipulação de DOM e elementos</li>
-  <li>comunicação de eventos do teclado com uma interface</li>
+  <li>Comunicação de eventos do teclado com uma interface</li>
   <li>Uso de LocalStorage para armazenar dados de uma sessão</li>
   <li>Lógica de Programação e Algoritmos</li>
   <li>Boas práticas de Github</li>
