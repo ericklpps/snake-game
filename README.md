@@ -1,5 +1,7 @@
 #  🐍 Projeto Games 1: Snake Game 🐍
 
+
+
 ## 🎯 Objetivo:
 Desenvolver uma versão do Snake Game, o famoso Jogo da Cobrinha, utilizando HTML, CSS e Javascript, assim praticando conceitos de:
 
