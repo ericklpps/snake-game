@@ -45,7 +45,7 @@ Desenvolver uma versão do Snake Game, o famoso Jogo da Cobrinha, utilizando HTM
 </ul>
 
 
-##🥚Easter Egg
+## 🥚 Easter Egg
 
 Ao comer uma comida, há uma chance de 20% que próxima seja uma pokebola. Ao ser comida, a cobra ficará roxa em homenagem ao Pokémon Arbok.
 A cor voltará ao normal ao comer de volta uma comida regular.
