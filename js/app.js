@@ -119,12 +119,9 @@ export function checkGameOver() {
 }
 
 window.addEventListener('keydown', e => {
-  if (isGameOver) {
-    e.preventDefault();
-    return;
-  }
+  const isInputFocused = document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'TEXTAREA';
 
-  if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.key)) {
+  if (!isInputFocused && ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.key)) {
     e.preventDefault();
   }
 });
