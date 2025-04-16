@@ -1,160 +1,170 @@
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #121212;
-    color: #333;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 100vw;
-    overflow: hidden; 
-  }
-  
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #121212;
+  color: #e0e0e0; 
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.container-regras {
+  background-color: #1e1e1e;
+  width: 800px;
+  height: 800px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(76, 175, 80, 0.3);
+  color: #e0e0e0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;
+  position: relative;
+}
+
+.titulo-regras {
+  color: #4CAF50;
+  text-align: center;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 32px;
+  position: absolute;
+  top: 80px;
+}
+
+.lista-regras-container {
+  width: 600px;
+  height: 500px;
+  overflow-y: auto;
+  margin: 150px 0 100px;
+  padding: 20px;
+  scrollbar-width: thin;
+  scrollbar-color: #4CAF50 #1e1e1e;
+}
+
+.lista-regras-container::-webkit-scrollbar {
+  width: 10px;
+}
+
+.lista-regras-container::-webkit-scrollbar-track {
+  background: #1e1e1e;
+}
+
+.lista-regras-container::-webkit-scrollbar-thumb {
+  background-color: #4CAF50;
+  border-radius: 10px;
+}
+
+.lista-regras {
+  list-style: none;
+  padding-left: 0;
+}
+
+.lista-regras li {
+  margin-bottom: 20px;
+  padding-left: 30px;
+  position: relative;
+  font-size: 18px;
+}
+
+.lista-regras li::before {
+  content: '🍎';
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.botoes-regras {
+  position: absolute;
+  bottom: 40px;
+}
+
+.botoes-regras a {
+  padding: 15px 30px;
+  font-size: 18px;
+  cursor: pointer;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  text-align: center;
+  font-family: 'Press Start 2P', cursive;
+}
+
+.botoes-regras a:hover {
+  background-color: #45a049;
+}
+
+@media (max-height: 850px), (max-width: 850px) {
   .container-regras {
-    background-color: #1e1e1e;
-    width: 800px;
-    height: 800px;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(76, 175, 80, 0.3);
-    color: #e0e0e0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 40px;
-    position: relative;
-  }
-  
-  .titulo-regras {
-    color: #4CAF50;
-    text-align: center;
-    font-family: 'Press Start 2P', cursive;
-    font-size: 32px;
-    position: absolute;
-    top: 80px;
-  }
-  
-  .lista-regras-container {
-    width: 600px;
-    height: 500px;
-    overflow-y: auto; 
-    margin: 150px 0 100px;
-    padding: 20px;
-    scrollbar-width: thin;
-    scrollbar-color: #4CAF50 #1e1e1e;
-  }
-  
-  .lista-regras-container::-webkit-scrollbar {
-    width: 10px;
-  }
-  
-  .lista-regras-container::-webkit-scrollbar-track {
-    background: #1e1e1e;
-  }
-  
-  .lista-regras-container::-webkit-scrollbar-thumb {
-    background-color: #4CAF50;
-    border-radius: 10px;
-  }
-  
-  .lista-regras {
-    list-style: none;
-    padding-left: 0;
-  }
-  
-  .lista-regras li {
-    margin-bottom: 20px;
-    padding-left: 30px;
-    position: relative;
-    font-size: 18px;
-  }
-  
-  .lista-regras li::before {
-    content: '🍎';
-    position: absolute;
-    left: 0;
-    top: 0;
-  }
-  
-  .voltar-button {
-    padding: 15px 30px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    text-decoration: none;
-    text-align: center;
-    position: absolute;
-    bottom: 80px;
-    font-size: 18px;
-  }
-  
-  .voltar-button:hover {
-    background-color: #45a049;
-  }
-  
-  @media (max-height: 850px), (max-width: 850px) {
-    .container-regras {
-      width: 700px;
-      height: 700px;
+      width: 600px;
+      height: 600px;
       padding: 30px;
-    }
-    
-    .titulo-regras {
+  }
+
+  .titulo-regras {
       font-size: 28px;
       top: 70px;
-    }
-    
-    .lista-regras-container {
+  }
+
+  .lista-regras-container {
       width: 500px;
       height: 400px;
       margin: 130px 0 90px;
       padding: 15px;
-    }
-    
-    .lista-regras li {
+  }
+
+  .lista-regras li {
       margin-bottom: 15px;
       padding-left: 25px;
       font-size: 16px;
-    }
-    
-    .voltar-button {
-      padding: 12px 25px;
-      bottom: 70px;
-      font-size: 16px;
-    }
   }
-  
-  @media (max-height: 750px), (max-width: 750px) {
-    .container-regras {
-      width: 600px;
-      height: 600px;
+
+  .botoes-regras {
+      bottom: 30px;
+  }
+
+  .botoes-regras a {
+      padding: 12px 25px;
+      font-size: 16px;
+  }
+}
+
+@media (max-height: 750px), (max-width: 750px) {
+  .container-regras {
+      width: 500px;
+      height: 500px;
       padding: 20px;
-    }
-    
-    .titulo-regras {
+  }
+
+  .titulo-regras {
       font-size: 24px;
       top: 60px;
-    }
-    
-    .lista-regras-container {
+  }
+
+  .lista-regras-container {
       width: 400px;
       height: 350px;
       margin: 110px 0 80px;
       padding: 10px;
-    }
-    
-    .lista-regras li {
+  }
+
+  .lista-regras li {
       margin-bottom: 12px;
       padding-left: 20px;
       font-size: 14px;
-    }
-    
-    .voltar-button {
-      padding: 10px 20px;
-      bottom: 60px;
-      font-size: 14px;
-    }
   }
-  
+
+  .botoes-regras {
+      bottom: 20px;
+  }
+
+  .botoes-regras a {
+      padding: 10px 20px;
+      font-size: 14px;
+  }
+}
