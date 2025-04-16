@@ -3,6 +3,7 @@ import { getInputDirection, updateLastInputDirection } from "./input.js";
 
 export let snake_speed = 5;
 let novosSegmentos = 0;
+let corCobra = 'verde';
 
 export const snakeBody = [
     { x: 11, y: 11 }
@@ -10,6 +11,10 @@ export const snakeBody = [
 
 export function setSnakeSpeed(speed) {
     snake_speed = speed;
+}
+
+export function setCorCobra(cor) {
+    corCobra = cor;
 }
 
 export function update() {
@@ -28,11 +33,9 @@ export function update() {
 }
 
 export function draw() {
-    const headClass = document.querySelector('.snake')?.classList.contains('roxa') ? 'roxa' : 'verde';
-
     snakeBody.forEach(segment => {
         const snakeElement = document.createElement('div');
-        snakeElement.classList.add('snake', headClass);
+        snakeElement.classList.add('snake', corCobra);
         snakeElement.style.gridRowStart = segment.y;
         snakeElement.style.gridColumnStart = segment.x;
         gameboard.appendChild(snakeElement);

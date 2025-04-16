@@ -1,10 +1,9 @@
 import { gameboard, generateRandomBoardPosition } from '../board/board.js';
-import { colisao as snakeCollision, aumentarCobra } from '../snake/snakeBody.js';
+import { colisao as snakeCollision, aumentarCobra, setCorCobra } from '../snake/snakeBody.js';
 
 export const cresceCobra = 1;
 let foodPosition = generateRandomPosition();
 let foodType = 'normal';
-
 let score = 0;
 
 export function update() {
@@ -18,9 +17,9 @@ export function update() {
         }
 
         if (foodType === 'pokebola') {
-            setCobraRoxa();
+            setCorCobra('roxa');
         } else {
-            setCobraVerde();
+            setCorCobra('verde');
         }
 
         foodPosition = generateRandomPosition();
@@ -57,18 +56,4 @@ function generateRandomPosition() {
     }
 
     return newFoodPosition;
-}
-
-function setCobraRoxa() {
-    document.querySelectorAll('.snake').forEach(segment => {
-        segment.classList.remove('verde');
-        segment.classList.add('roxa');
-    });
-}
-
-function setCobraVerde() {
-    document.querySelectorAll('.snake').forEach(segment => {
-        segment.classList.remove('roxa');
-        segment.classList.add('verde');
-    });
 }
