@@ -1,18 +1,6 @@
 import { gameboard, isOutsideBoard } from "./board/board.js";
-import {
-  snake_speed,
-  draw as snakeDraw,
-  update as snakeUpdate,
-  getSnakeHead,
-  hasSelfColision as hasSnakeSelfCollision,
-  setSnakeSpeed,
-  snakeBody
-} from "./snake/snakeBody.js";
-import {
-  draw as foodDraw,
-  update as foodUpdate,
-  getScore
-} from './food/food.js';
+import {snake_speed,draw as snakeDraw,update as snakeUpdate,getSnakeHead,hasSelfColision as hasSnakeSelfCollision,setSnakeSpeed,snakeBody} from "./snake/snakeBody.js";
+import {draw as foodDraw, update as foodUpdate, getScore} from './food/food.js';
 
 let lastTimeRender = 0;
 let isGameOver = false;
@@ -21,19 +9,19 @@ const dificuldadeElement = document.getElementById('dificuldade-atual');
 
 document.getElementById('easy').addEventListener('click', () => {
   setSnakeSpeed(5);
-  setDificuldade('Fraco');
+  setDificuldade('GAZELA FERIDA');
   resetGame();
 });
 
 document.getElementById('medium').addEventListener('click', () => {
-  setSnakeSpeed(15);
-  setDificuldade('Te falta coragem');
+  setSnakeSpeed(10);
+  setDificuldade('AINDA COM MEDO?');
   resetGame();
 });
 
 document.getElementById('hard').addEventListener('click', () => {
-  setSnakeSpeed(50);
-  setDificuldade('Domador de Cobras');
+  setSnakeSpeed(35);
+  setDificuldade('MESTRE DAS COBRAS');
   resetGame();
 });
 
@@ -44,22 +32,22 @@ function setDificuldade(label) {
 }
 
 function main(currentTime) {
-  if (checkGameOver() && !isGameOver) {
-    isGameOver = true;
-    showGameOverScreen();
-    return;
-  }
+  if (isGameOver) return;
 
   window.requestAnimationFrame(main);
 
   const secondsSinceLastRender = (currentTime - lastTimeRender) / 1000;
-
   if (secondsSinceLastRender < 1 / snake_speed) return;
 
   lastTimeRender = currentTime;
 
   update();
   draw();
+
+  if (checkGameOver()) {
+    isGameOver = true;
+    showGameOverScreen();
+  }
 }
 
 function showGameOverScreen() {
@@ -116,13 +104,12 @@ function draw() {
 
 function resetGame() {
   while (gameboard.firstChild) {
-      gameboard.removeChild(gameboard.firstChild);
+    gameboard.removeChild(gameboard.firstChild);
   }
 
+  isGameOver = false;
   snakeBody.length = 1;
   snakeBody[0] = { x: 11, y: 11 };
-
-  document.querySelectorAll('.snake').forEach(el => el.classList.add('verde'));
 
   window.requestAnimationFrame(main);
 }
@@ -132,6 +119,11 @@ export function checkGameOver() {
 }
 
 window.addEventListener('keydown', e => {
+  if (isGameOver) {
+    e.preventDefault();
+    return;
+  }
+
   if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.key)) {
     e.preventDefault();
   }

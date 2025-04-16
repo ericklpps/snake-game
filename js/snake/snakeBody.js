@@ -1,9 +1,10 @@
 import { gameboard, isOutsideBoard } from "../board/board.js";
-import { getInputDirection, updateLastInputDirection } from "./input.js";
+import { getInputDirection} from "./input.js";
 
 export let snake_speed = 5;
 let novosSegmentos = 0;
 let corCobra = 'verde';
+
 
 export const snakeBody = [
     { x: 11, y: 11 }
@@ -29,7 +30,6 @@ export function update() {
     snakeBody[0].x += inputDirection.x;
     snakeBody[0].y += inputDirection.y;
 
-    updateLastInputDirection();
 }
 
 export function draw() {
