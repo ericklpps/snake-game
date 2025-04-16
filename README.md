@@ -1,6 +1,6 @@
-## Projeto Games 1: Snake Game 
+# Projeto Games 1: Snake Game 
 
-# Objetivo:
+## Objetivo:
 Desenvolver uma versão do Snake Game, o famoso Jogo da Cobrinha, utilizando HTML, CSS e Javascript, assim praticando conceitos de:
 
 <ul>
@@ -11,7 +11,7 @@ Desenvolver uma versão do Snake Game, o famoso Jogo da Cobrinha, utilizando HTM
   <li>Boas práticas de Github</li>
 </ul>
 
-# Tecnologias Utilizadas:
+## Tecnologias Utilizadas:
 
 <ul>
   <li>HMTL: Interface do jogo e estrutura das telas</li>
@@ -20,7 +20,7 @@ Desenvolver uma versão do Snake Game, o famoso Jogo da Cobrinha, utilizando HTM
   <li>LocalStorage: Armazenar informações (ranking)</li>
 </ul>
 
-# Funcionalidades do jogo:
+## Funcionalidades do jogo:
 
 <ul>
   <li>Movimento da cobra: Feito pelas setas do teclado ⬅ ⬆ ⬇ ⮕ </li>
@@ -33,7 +33,7 @@ Desenvolver uma versão do Snake Game, o famoso Jogo da Cobrinha, utilizando HTM
 </ul>
 
 
-# Javascript
+## Javascript
 
 <ul>
   <li>app.js: responsável pelo loop do jogo, game over e integração geral dos módulos</li>
@@ -45,8 +45,7 @@ Desenvolver uma versão do Snake Game, o famoso Jogo da Cobrinha, utilizando HTM
 </ul>
 
 
-# Easter Egg
+## Easter Egg
 
 Ao comer uma comida, há uma chance de 20% que próxima seja uma pokebola. Ao ser comida, a cobra ficará roxa em homenagem ao Pokémon Arbok
-
 A cor voltará ao normal ao comer de volta uma comida regular.
