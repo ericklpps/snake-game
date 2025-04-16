@@ -7,6 +7,7 @@ body {
   width: 100vw;
   overflow: hidden;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
 }
 
 .container-principal {
@@ -18,8 +19,8 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  padding: 30px;
+  justify-content: space-around;
+  padding: 40px;
   position: relative;
   overflow: hidden;
 }
@@ -27,113 +28,106 @@ body {
 .titulo {
   font-family: 'Press Start 2P', cursive;
   color: #4CAF50;
-  font-size: 36px;
+  font-size: 32px;
   text-align: center;
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 600px;
-  height: auto;
+  margin: 0;
 }
 
 .logo-jogo {
-  width: 300px;
-  height: auto;
   display: flex;
   justify-content: center;
-}
-.logo-jogo img {
-  width: 350px; 
+  align-items: center;
   height: auto;
+  margin: 20px 0;
+}
+
+.logo-jogo img {
+  width: 400px;
+  max-width: 90%;
+  height: auto;
+  animation: subirDescer 1s infinite alternate;
+  filter: drop-shadow(0 0 10px rgba(76, 175, 80, 0.5));
 }
 
 .botoes-pagina-inicial {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px; 
-  width: 600px;
-  margin-bottom: 0;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  max-width: 400px;
 }
 
 .botoes-pagina-inicial a {
   padding: 15px 30px;
-  font-size: 18px;
+  font-size: 16px;
   cursor: pointer;
   background-color: #4CAF50;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   text-decoration: none;
   text-align: center;
   font-family: 'Press Start 2P', cursive;
+  transition: background-color 0.2s, transform 0.2s;
 }
 
 .botoes-pagina-inicial a:hover {
   background-color: #45a049;
+  transform: scale(1.05);
 }
 
-@media (max-height: 850px), (max-width: 850px) {
+@keyframes subirDescer {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-10px);
+  }
+}
+
+@media (max-width: 850px), (max-height: 850px) {
   .container-principal {
-      width: 600px;
-      padding: 30px;
-      gap: 30px;
+    width: 650px;
+    height: 650px;
+    padding: 30px;
   }
 
   .titulo {
-      font-size: 32px;
+    font-size: 28px;
   }
 
-  .container {
-      width: 500px;
-  }
-
-  .logo-jogo {
-      width: 200px;
-  }
-
-  .botoes-pagina-inicial {
-      width: 500px;
-      gap: 15px;
+  .logo-jogo img {
+    width: 300px;
   }
 
   .botoes-pagina-inicial a {
-      padding: 12px 25px;
-      font-size: 16px;
+    font-size: 14px;
+    padding: 12px 25px;
   }
 }
 
-@media (max-height: 750px), (max-width: 750px) {
+@media (max-width: 750px), (max-height: 750px) {
   .container-principal {
     width: 500px;
-    height: 480px;
+    height: 500px;
+    padding: 25px;
   }
 
   .titulo {
-      font-size: 28px;
+    font-size: 24px;
   }
 
-  .container {
-      width: 400px;
-  }
-
-  .logo-jogo {
-      width: 150px;
-  }
-
-  .botoes-pagina-inicial {
-      width: 400px;
-      gap: 10px;
+  .logo-jogo img {
+    width: 230px;
   }
 
   .botoes-pagina-inicial a {
-      padding: 10px 20px;
-      font-size: 14px;
+    font-size: 13px;
+    padding: 10px 20px;
+  }
+
+  .botoes-pagina-inicial {
+    max-width: 300px;
+    gap: 15px;
   }
 }

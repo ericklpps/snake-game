@@ -1,8 +1,8 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #000; /* fundo preto */
-  color: #fff;
+  background-color: #121212;
+  color: #e0e0e0;
   font-family: 'Press Start 2P', cursive;
   display: flex;
   flex-direction: column;
@@ -14,38 +14,50 @@ body {
 #back-to-menu {
   align-self: flex-start;
   margin: 20px;
-  color: #fff;
+  color: #4CAF50;
   text-decoration: none;
-  font-size: 14px;
-  transition: color 0.3s ease;
+  font-size: 18px;
+  background-color: #1e1e1e;
+  padding: 10px 15px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(76, 175, 80, 0.4);
+  transition: background-color 0.2s, transform 0.2s;
 }
 
 #back-to-menu:hover {
-  color: #00ffcc;
+  background-color: #2e2e2e;
+  transform: scale(1.05);
 }
 
 h1 {
-  font-size: 20px;
+  font-size: 24px;
   margin-top: 40px;
   margin-bottom: 30px;
   text-align: center;
+  color: #4CAF50;
 }
 
 #ranking-list {
   list-style: none;
   padding: 0;
   width: 80%;
-  max-width: 500px;
+  max-width: 600px;
 }
 
 #ranking-list li {
-  background-color: #111;
-  border: 2px solid #00ffcc;
-  padding: 10px 15px;
-  margin-bottom: 12px;
-  border-radius: 8px;
+  background-color: #1e1e1e;
+  border: 2px solid #4CAF50;
+  padding: 12px 20px;
+  margin-bottom: 16px;
+  border-radius: 10px;
   text-align: center;
-  font-size: 12px;
+  font-size: 14px;
+  color: #e0e0e0;
+  transition: transform 0.2s;
+}
+
+#ranking-list li:hover {
+  transform: scale(1.02);
 }
 
 #ranking-list li:nth-child(1) {
@@ -59,6 +71,22 @@ h1 {
 }
 
 #ranking-list li:nth-child(3) {
-  border-color: #cd7f32; /* bronze */
+  border-color: #cd7f32;
   color: #cd7f32;
+}
+
+@media (max-width: 600px) {
+  #ranking-list li {
+    font-size: 12px;
+    padding: 10px 16px;
+  }
+
+  #back-to-menu {
+    font-size: 16px;
+    padding: 8px 12px;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
 }

@@ -1,106 +1,140 @@
 import { gameboard, isOutsideBoard } from "./board/board.js";
-import { snake_speed, draw as snakeDraw, update as snakeUpdate, getSnakeHead, hasSelfColision as hasSnakeSelfCollision, setSnakeSpeed } from "./snake/snakeBody.js"
-import { draw as foodDraw, update as foodUpdate, getScore} from './food/food.js'
-
-let score = 0;
-const scoreElement = document.getElementById('pontuacao');
-const finalScoreElement = document.getElementById('final-score');
-
-window.addEventListener('keydown', e => ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.key) && e.preventDefault());
+import {
+  snake_speed,
+  draw as snakeDraw,
+  update as snakeUpdate,
+  getSnakeHead,
+  hasSelfColision as hasSnakeSelfCollision,
+  setSnakeSpeed,
+  snakeBody
+} from "./snake/snakeBody.js";
+import {
+  draw as foodDraw,
+  update as foodUpdate,
+  getScore
+} from './food/food.js';
 
 let lastTimeRender = 0;
-
+let isGameOver = false;
 
 const dificuldadeElement = document.getElementById('dificuldade-atual');
 
 document.getElementById('easy').addEventListener('click', () => {
-    setSnakeSpeed(5);
-    setDificuldade('Fraco');
-    resetGame();
+  setSnakeSpeed(5);
+  setDificuldade('Fraco');
+  resetGame();
 });
 
 document.getElementById('medium').addEventListener('click', () => {
-    setSnakeSpeed(15);
-    setDificuldade('Te falta coragem');
-    resetGame();
+  setSnakeSpeed(15);
+  setDificuldade('Te falta coragem');
+  resetGame();
 });
 
 document.getElementById('hard').addEventListener('click', () => {
-    setSnakeSpeed(50);
-    setDificuldade('Domador de Cobras');
-    resetGame();
+  setSnakeSpeed(50);
+  setDificuldade('Domador de Cobras');
+  resetGame();
 });
 
-
 function setDificuldade(label) {
-    if (dificuldadeElement) {
-        dificuldadeElement.textContent = `Dificuldade: ${label}`;
-    }
+  if (dificuldadeElement) {
+    dificuldadeElement.textContent = `Dificuldade: ${label}`;
+  }
 }
 
-let isGameOver = false;
+function main(currentTime) {
+  if (checkGameOver() && !isGameOver) {
+    isGameOver = true;
+    showGameOverScreen();
+    return;
+  }
 
-function main(currentTime){
-    
-    if (checkGameOver() && !isGameOver) {
-        isGameOver = true;
-        showGameOverScreen();
-        return;
-    }
+  window.requestAnimationFrame(main);
 
-    window.requestAnimationFrame(main);
+  const secondsSinceLastRender = (currentTime - lastTimeRender) / 1000;
 
-    const secondsSinceLastRender = (currentTime - lastTimeRender)/1000;
-    
-    if (secondsSinceLastRender < 1 / snake_speed) return;
+  if (secondsSinceLastRender < 1 / snake_speed) return;
 
-    lastTimeRender = currentTime;
+  lastTimeRender = currentTime;
 
-    //contolar a lógica
-    update();
-
-    //adicionar elementos na tela
-    draw();
+  update();
+  draw();
 }
-
 
 function showGameOverScreen() {
-    const screen = document.getElementById('game-over-screen');
-    const finalScoreElement = document.getElementById('final-score');
+  const screen = document.getElementById('game-over-screen');
+  const finalScoreElement = document.getElementById('final-score');
+  const score = getScore();
 
-    screen.classList.remove('hidden');
-    finalScoreElement.textContent = `Pontuação: ${getScore()}`;
+  screen.classList.remove('hidden');
+  finalScoreElement.textContent = `Pontuação: ${score}`;
 
-    document.getElementById('restart-button').addEventListener('click', () => {
-        window.location.reload();
-    });
+  const inputContainer = document.createElement('div');
+  inputContainer.classList.add('input-container');
+
+  const input = document.createElement('input');
+  input.type = 'text';
+  input.placeholder = 'Digite seu nome';
+  input.id = 'nome-jogador';
+
+  const saveButton = document.createElement('button');
+  saveButton.textContent = 'Salvar';
+  saveButton.id = 'save-button';
+
+  inputContainer.appendChild(input);
+  inputContainer.appendChild(saveButton);
+
+  screen.querySelector('.game-over-box').appendChild(inputContainer);
+
+  saveButton.addEventListener('click', () => {
+    const nome = input.value.trim();
+    if (nome === '') return;
+
+    const ranking = JSON.parse(localStorage.getItem('ranking')) || [];
+    ranking.push({ nome, pontos: score });
+    localStorage.setItem('ranking', JSON.stringify(ranking));
+
+    window.location.href = 'ranking.html';
+  });
+
+  document.getElementById('restart-button').addEventListener('click', () => {
+    window.location.reload();
+  });
 }
 
-function update(){
-    gameboard.innerHTML = '';
-    snakeUpdate();
-    foodUpdate();
+function update() {
+  gameboard.innerHTML = '';
+  snakeUpdate();
+  foodUpdate();
 }
 
-function draw(){
-    snakeDraw();
-    foodDraw();
+function draw() {
+  snakeDraw();
+  foodDraw();
 }
 
 function resetGame() {
-    while (gameboard.firstChild) {
+  while (gameboard.firstChild) {
       gameboard.removeChild(gameboard.firstChild);
-    }
-    
-    snakeBody.length = 1;
-    snakeBody[0] = { x: 11, y: 11 };
-    
-    window.requestAnimationFrame(main);
+  }
+
+  snakeBody.length = 1;
+  snakeBody[0] = { x: 11, y: 11 };
+
+  document.querySelectorAll('.snake').forEach(el => el.classList.add('verde'));
+
+  window.requestAnimationFrame(main);
 }
 
-export function checkGameOver(){
+export function checkGameOver() {
   return isOutsideBoard(getSnakeHead()) || hasSnakeSelfCollision();
-
 }
 
-window.requestAnimationFrame(main)
+window.addEventListener('keydown', e => {
+  if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.key)) {
+    e.preventDefault();
+  }
+});
+
+window.requestAnimationFrame(main);
