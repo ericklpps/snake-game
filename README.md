@@ -31,3 +31,13 @@ Desenvolver uma versão do Snake Game, o famoso Jogo da Cobrinha, utilizando HTM
   <li>Ranckeamento: Ao armazenar sua pontuação, ela pode ser acessada pelo menu na aba Ranking em caso de ser uma das 10 melhores, sendo o TOP 3 com cores de medalhas</li>
   <li>Regras: Assim como o Rancking, também temos uma tela de instruções de como funciona o jogo</li>
 </ul>
+
+# Javascript
+
+Módulo | Função Principal
+app.js | Controla o loop do jogo, game over e integração geral dos módulos
+snakeBody.js | Gerencia o corpo da cobra, colisões, movimento, crescimento e cor
+input.js | Captura direção do jogador e impede reversão de 180°
+food.js | Gera comida normal e pokébola; pontuações e cor da cobra
+board.js | Define o tamanho do tabuleiro e posições aleatórias
+ranking.js | Lê e exibe o ranking salvo no localStorage
