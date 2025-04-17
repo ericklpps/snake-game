@@ -57,3 +57,11 @@ function generateRandomPosition() {
 
     return newFoodPosition;
 }
+
+export function resetScore() {
+    score = 0;
+    const pontuacaoElement = document.getElementById("pontuacao");
+    if (pontuacaoElement) {
+        pontuacaoElement.textContent = `Pontos: 0`;
+    }
+}
