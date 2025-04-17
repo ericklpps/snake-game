@@ -1,6 +1,19 @@
 import { gameboard, isOutsideBoard } from "./board/board.js";
-import {snake_speed,draw as snakeDraw,update as snakeUpdate,getSnakeHead,hasSelfColision as hasSnakeSelfCollision,setSnakeSpeed,snakeBody} from "./snake/snakeBody.js";
-import {draw as foodDraw, update as foodUpdate, getScore} from './food/food.js';
+import {
+  snake_speed,
+  draw as snakeDraw,
+  update as snakeUpdate,
+  getSnakeHead,
+  hasSelfColision as hasSnakeSelfCollision,
+  setSnakeSpeed,
+  snakeBody
+} from "./snake/snakeBody.js";
+import {
+  draw as foodDraw,
+  update as foodUpdate,
+  getScore,
+  resetScore
+} from './food/food.js';
 
 let lastTimeRender = 0;
 let isGameOver = false;
@@ -111,6 +124,8 @@ function resetGame() {
   snakeBody.length = 1;
   snakeBody[0] = { x: 11, y: 11 };
 
+  resetScore(); 
+
   window.requestAnimationFrame(main);
 }
 
@@ -119,7 +134,9 @@ export function checkGameOver() {
 }
 
 window.addEventListener('keydown', e => {
-  const isInputFocused = document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'TEXTAREA';
+  const isInputFocused =
+    document.activeElement.tagName === 'INPUT' ||
+    document.activeElement.tagName === 'TEXTAREA';
 
   if (!isInputFocused && ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.key)) {
     e.preventDefault();
